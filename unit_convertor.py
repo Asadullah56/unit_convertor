@@ -46,13 +46,13 @@ def convert_unit(value, unit_from, unit_to):
         return "⚠️ Conversion not supported!"
     
 # Title with emoji
-st.markdown("<p class='title'>🔄 Unit Converter 🔄</p>", unsafe_allow_html=True)
+st.markdown("<p class='title'>🔀 Unit Converter 👻 </p>", unsafe_allow_html=True)
 
 # Input value
 value = st.number_input("🔢 Enter Value:", min_value=1.0, step=1.0)
 
 # Select boxes for units
-unit_from = st.selectbox("📏 Convert from:", ["meter", "kilometer", "gram", "kilogram"])
+unit_from = st.selectbox("⏭️ Convert from:", ["meter", "kilometer", "gram", "kilogram"])
 unit_to = st.selectbox("🎯 Convert to:", ["meter", "kilometer", "gram", "kilogram"])
 
 # Conversion button
