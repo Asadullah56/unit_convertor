@@ -49,7 +49,7 @@ def convert_unit(value, unit_from, unit_to):
 st.markdown("<p class='title'>🔄 Unit Converter 🔄</p>", unsafe_allow_html=True)
 
 # Input value
-value = st.number_input("🔢 Enter Value:", min_value=0.0, step=0.1)
+value = st.number_input("🔢 Enter Value:", min_value=1.0, step=1.0)
 
 # Select boxes for units
 unit_from = st.selectbox("📏 Convert from:", ["meter", "kilometer", "gram", "kilogram"])
