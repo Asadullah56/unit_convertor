@@ -1,5 +1,34 @@
 import streamlit as st
 
+# Custom CSS to make the app look attractive
+st.markdown("""
+    <style>
+    body {
+        background-color: #f0f2f6;
+    }
+    .stApp {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    }
+    .title {
+        color: #ff5733;
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .stButton>button {
+        background-color: #ff5733 !important;
+        color: white !important;
+        font-size: 18px;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Function to convert units
 def convert_unit(value, unit_from, unit_to):
     conversion = {
         "meter_kilometer": 0.001,  # 1 meter = 0.001 kilometer
@@ -11,18 +40,22 @@ def convert_unit(value, unit_from, unit_to):
     key = f"{unit_from}_{unit_to}"
 
     if key in conversion:
-        factor = conversion[key]  # Fixed variable name
+        factor = conversion[key]
         return value * factor
     else:
-        return "Conversion not supported"
+        return "⚠️ Conversion not supported!"
     
-st.title("Unit Converter")
+# Title with emoji
+st.markdown("<p class='title'>🔄 Unit Converter 🔄</p>", unsafe_allow_html=True)
 
-value = st.number_input("Enter Value:")
+# Input value
+value = st.number_input("🔢 Enter Value:", min_value=0.0, step=0.1)
 
-unit_from = st.selectbox("Convert from:", ["meter", "kilometer", "gram", "kilogram"])
-unit_to = st.selectbox("Convert to:", ["meter", "kilometer", "gram", "kilogram"])
+# Select boxes for units
+unit_from = st.selectbox("📏 Convert from:", ["meter", "kilometer", "gram", "kilogram"])
+unit_to = st.selectbox("🎯 Convert to:", ["meter", "kilometer", "gram", "kilogram"])
 
-if st.button("Convert"):
+# Conversion button
+if st.button("🚀 Convert"):
     result = convert_unit(value, unit_from, unit_to)
-    st.write(f"Converted Value: {result}")  # Fixed `st.write` statement
+    st.success(f"✅ **Converted Value:** {result}")  # Styled output
